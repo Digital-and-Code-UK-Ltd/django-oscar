@@ -5,7 +5,7 @@ from oscar.core.loading import get_model
 
 WishList = get_model("wishlists", "WishList")
 Line = get_model("wishlists", "Line")
-WishListSharedEmail = get_model("wishlists", "WishListSharedEmail")
+# WishListSharedEmail = get_model("wishlists", "WishListSharedEmail")
 
 
 class WishListForm(forms.ModelForm):
@@ -24,7 +24,7 @@ class WishListLineForm(forms.ModelForm):
         self.fields["quantity"].widget.attrs["class"] = "input-mini"
 
 
-class WishListSharedEmailForm(forms.ModelForm):
-    class Meta:
-        model = WishListSharedEmail
-        fields = ("email",)
+# class WishListSharedEmailForm(forms.ModelForm):
+#     class Meta:
+#         model = WishListSharedEmail
+#         fields = ("email",)

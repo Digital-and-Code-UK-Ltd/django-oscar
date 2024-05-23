@@ -5,10 +5,13 @@ from oscar.core.loading import get_classes, get_model
 
 WishList = get_model("wishlists", "WishList")
 Line = get_model("wishlists", "Line")
-WishListSharedEmail = get_model("wishlists", "WishListSharedEmail")
+# WishListSharedEmail = get_model("wishlists", "WishListSharedEmail")
 
-WishListLineForm, WishListSharedEmailForm = get_classes(
-    "wishlists.forms", ("WishListLineForm", "WishListSharedEmailForm")
+# WishListLineForm, WishListSharedEmailForm = get_classes(
+#     "wishlists.forms", ("WishListLineForm", "WishListSharedEmailForm")
+# )
+WishListLineForm = get_classes(
+    "wishlists.forms", ("WishListLineForm",)
 )
 
 
@@ -20,11 +23,11 @@ LineFormset = inlineformset_factory(
     extra=0,
     can_delete=False,
 )
-WishListSharedEmailFormset = inlineformset_factory(
-    WishList,
-    WishListSharedEmail,
-    fields=("email",),
-    form=WishListSharedEmailForm,
-    extra=3,
-    can_delete=True,
-)
+# WishListSharedEmailFormset = inlineformset_factory(
+#     WishList,
+#     WishListSharedEmail,
+#     fields=("email",),
+#     form=WishListSharedEmailForm,
+#     extra=3,
+#     can_delete=True,
+# )

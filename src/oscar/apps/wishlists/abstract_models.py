@@ -165,24 +165,24 @@ class AbstractLine(models.Model):
         verbose_name = _("Wish list line")
 
 
-class AbstractWishListSharedEmail(models.Model):
-    """
-    An email which is allowed to view and possibly edit the wishlist, if shared.
-    The user will have to login/create an account with this email in order to view it.
-    """
-
-    wishlist = models.ForeignKey(
-        "wishlists.WishList",
-        on_delete=models.CASCADE,
-        related_name="shared_emails",
-        verbose_name=_("Wish List"),
-    )
-    email = models.EmailField(verbose_name=_("Email"))
-
-    def __str__(self):
-        return "%s - %s" % (self.wishlist.name, self.email)
-
-    class Meta:
-        abstract = True
-        app_label = "wishlists"
-        verbose_name = _("Wish list shared email")
+# class AbstractWishListSharedEmail(models.Model):
+#     """
+#     An email which is allowed to view and possibly edit the wishlist, if shared.
+#     The user will have to login/create an account with this email in order to view it.
+#     """
+#
+#     wishlist = models.ForeignKey(
+#         "wishlists.WishList",
+#         on_delete=models.CASCADE,
+#         related_name="shared_emails",
+#         verbose_name=_("Wish List"),
+#     )
+#     email = models.EmailField(verbose_name=_("Email"))
+#
+#     def __str__(self):
+#         return "%s - %s" % (self.wishlist.name, self.email)
+#
+#     class Meta:
+#         abstract = True
+#         app_label = "wishlists"
+#         verbose_name = _("Wish list shared email")

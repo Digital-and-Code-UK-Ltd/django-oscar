@@ -71,33 +71,33 @@ class CustomerConfig(OscarConfig):
             "customer.alerts.views", "ProductAlertCancelView"
         )
 
-        self.wishlists_add_product_view = get_class(
-            "customer.wishlists.views", "WishListAddProduct"
-        )
-        self.wishlists_list_view = get_class(
-            "customer.wishlists.views", "WishListListView"
-        )
-        self.wishlists_detail_view = get_class(
-            "customer.wishlists.views", "WishListDetailView"
-        )
-        self.wishlists_create_view = get_class(
-            "customer.wishlists.views", "WishListCreateView"
-        )
-        self.wishlists_create_with_product_view = get_class(
-            "customer.wishlists.views", "WishListCreateView"
-        )
-        self.wishlists_update_view = get_class(
-            "customer.wishlists.views", "WishListUpdateView"
-        )
-        self.wishlists_delete_view = get_class(
-            "customer.wishlists.views", "WishListDeleteView"
-        )
-        self.wishlists_remove_product_view = get_class(
-            "customer.wishlists.views", "WishListRemoveProduct"
-        )
-        self.wishlists_move_product_to_another_view = get_class(
-            "customer.wishlists.views", "WishListMoveProductToAnotherWishList"
-        )
+        # self.wishlists_add_product_view = get_class(
+        #     "customer.wishlists.views", "WishListAddProduct"
+        # )
+        # self.wishlists_list_view = get_class(
+        #     "customer.wishlists.views", "WishListListView"
+        # )
+        # self.wishlists_detail_view = get_class(
+        #     "customer.wishlists.views", "WishListDetailView"
+        # )
+        # self.wishlists_create_view = get_class(
+        #     "customer.wishlists.views", "WishListCreateView"
+        # )
+        # self.wishlists_create_with_product_view = get_class(
+        #     "customer.wishlists.views", "WishListCreateView"
+        # )
+        # self.wishlists_update_view = get_class(
+        #     "customer.wishlists.views", "WishListUpdateView"
+        # )
+        # self.wishlists_delete_view = get_class(
+        #     "customer.wishlists.views", "WishListDeleteView"
+        # )
+        # self.wishlists_remove_product_view = get_class(
+        #     "customer.wishlists.views", "WishListRemoveProduct"
+        # )
+        # self.wishlists_move_product_to_another_view = get_class(
+        #     "customer.wishlists.views", "WishListMoveProductToAnotherWishList"
+        # )
 
     def get_urls(self):
         urls = [
@@ -242,62 +242,62 @@ class CustomerConfig(OscarConfig):
                 name="alerts-cancel-by-pk",
             ),
             # Wishlists
-            path(
-                "wishlists/",
-                login_required(self.wishlists_list_view.as_view()),
-                name="wishlists-list",
-            ),
-            path(
-                "wishlists/add/<int:product_pk>/",
-                login_required(self.wishlists_add_product_view.as_view()),
-                name="wishlists-add-product",
-            ),
-            path(
-                "wishlists/<str:key>/add/<int:product_pk>/",
-                login_required(self.wishlists_add_product_view.as_view()),
-                name="wishlists-add-product",
-            ),
-            path(
-                "wishlists/create/",
-                login_required(self.wishlists_create_view.as_view()),
-                name="wishlists-create",
-            ),
-            path(
-                "wishlists/create/with-product/<int:product_pk>/",
-                login_required(self.wishlists_create_view.as_view()),
-                name="wishlists-create-with-product",
-            ),
-            # Wishlists can be publicly shared, no login required
-            path(
-                "wishlists/<str:key>/",
-                self.wishlists_detail_view.as_view(),
-                name="wishlists-detail",
-            ),
-            path(
-                "wishlists/<str:key>/update/",
-                login_required(self.wishlists_update_view.as_view()),
-                name="wishlists-update",
-            ),
-            path(
-                "wishlists/<str:key>/delete/",
-                login_required(self.wishlists_delete_view.as_view()),
-                name="wishlists-delete",
-            ),
-            path(
-                "wishlists/<str:key>/lines/<int:line_pk>/delete/",
-                login_required(self.wishlists_remove_product_view.as_view()),
-                name="wishlists-remove-product",
-            ),
-            path(
-                "wishlists/<str:key>/products/<int:product_pk>/delete/",
-                login_required(self.wishlists_remove_product_view.as_view()),
-                name="wishlists-remove-product",
-            ),
-            path(
-                "wishlists/<str:key>/lines/<int:line_pk>/move-to/<str:to_key>/",
-                login_required(self.wishlists_move_product_to_another_view.as_view()),
-                name="wishlists-move-product-to-another",
-            ),
+            # path(
+            #     "wishlists/",
+            #     login_required(self.wishlists_list_view.as_view()),
+            #     name="wishlists-list",
+            # ),
+            # path(
+            #     "wishlists/add/<int:product_pk>/",
+            #     login_required(self.wishlists_add_product_view.as_view()),
+            #     name="wishlists-add-product",
+            # ),
+            # path(
+            #     "wishlists/<str:key>/add/<int:product_pk>/",
+            #     login_required(self.wishlists_add_product_view.as_view()),
+            #     name="wishlists-add-product",
+            # ),
+            # path(
+            #     "wishlists/create/",
+            #     login_required(self.wishlists_create_view.as_view()),
+            #     name="wishlists-create",
+            # ),
+            # path(
+            #     "wishlists/create/with-product/<int:product_pk>/",
+            #     login_required(self.wishlists_create_view.as_view()),
+            #     name="wishlists-create-with-product",
+            # ),
+            # # Wishlists can be publicly shared, no login required
+            # path(
+            #     "wishlists/<str:key>/",
+            #     self.wishlists_detail_view.as_view(),
+            #     name="wishlists-detail",
+            # ),
+            # path(
+            #     "wishlists/<str:key>/update/",
+            #     login_required(self.wishlists_update_view.as_view()),
+            #     name="wishlists-update",
+            # ),
+            # path(
+            #     "wishlists/<str:key>/delete/",
+            #     login_required(self.wishlists_delete_view.as_view()),
+            #     name="wishlists-delete",
+            # ),
+            # path(
+            #     "wishlists/<str:key>/lines/<int:line_pk>/delete/",
+            #     login_required(self.wishlists_remove_product_view.as_view()),
+            #     name="wishlists-remove-product",
+            # ),
+            # path(
+            #     "wishlists/<str:key>/products/<int:product_pk>/delete/",
+            #     login_required(self.wishlists_remove_product_view.as_view()),
+            #     name="wishlists-remove-product",
+            # ),
+            # path(
+            #     "wishlists/<str:key>/lines/<int:line_pk>/move-to/<str:to_key>/",
+            #     login_required(self.wishlists_move_product_to_another_view.as_view()),
+            #     name="wishlists-move-product-to-another",
+            # ),
         ]
 
         return self.post_process_urls(urls)
