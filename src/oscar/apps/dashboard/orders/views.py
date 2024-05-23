@@ -1,5 +1,4 @@
 import datetime
-from collections import OrderedDict
 from decimal import Decimal as D
 from decimal import InvalidOperation
 
@@ -371,7 +370,7 @@ class OrderListView(BulkEditMixin, ListView):
                      ('shipping_address_name', _('Deliver to name')),
                      ('billing_address_name', _('Bill to name')),
                      )
-        columns = OrderedDict()
+        columns = {}
         for k, v in meta_data:
             columns[k] = v
 
