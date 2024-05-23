@@ -1,8 +1,8 @@
 import logging
-from collections import OrderedDict
 from decimal import Decimal as D
 
 from django.conf import settings
+from django.core.serializers.json import DjangoJSONEncoder
 from django.core.signing import BadSignature, Signer
 from django.db import models
 from django.db.models import Sum
@@ -255,7 +255,7 @@ class AbstractOrder(models.Model):
             return ''
 
         # Collect all events by event-type
-        event_map = OrderedDict()
+        event_map = {}
         for event in events:
             event_name = event.event_type.name
             if event_name not in event_map:
@@ -617,7 +617,11 @@ class AbstractLine(models.Model):
         desc = self.title
         ops = []
         for attribute in self.attributes.all():
-            ops.append("%s = '%s'" % (attribute.type, attribute.value))
+            value = attribute.value
+            if isinstance(value, list):
+                ops.append("%s = '%s'" % (attribute.type, (", ".join([str(v) for v in value]))))
+            else:
+                ops.append("%s = '%s'" % (attribute.type, value))
         if ops:
             desc = "%s (%s)" % (desc, ", ".join(ops))
         return desc
@@ -714,7 +718,7 @@ class AbstractLine(models.Model):
         """
         Returns a dict of shipping events that this line has been through
         """
-        status_map = OrderedDict()
+        status_map = {}
         for event in self.shipping_events.all():
             event_type = event.event_type
             event_name = event_type.name
@@ -793,7 +797,7 @@ class AbstractLineAttribute(models.Model):
         'catalogue.Option', null=True, on_delete=models.SET_NULL,
         related_name="line_attributes", verbose_name=_("Option"))
     type = models.CharField(_("Type"), max_length=128)
-    value = models.CharField(_("Value"), max_length=255)
+    value = models.JSONField(_("Value"), encoder=DjangoJSONEncoder)
 
     class Meta:
         abstract = True
@@ -1190,3 +1194,5 @@ class AbstractSurcharge(models.Model):
         abstract = True
         app_label = 'order'
         ordering = ['pk']
+        verbose_name = _("Surcharge")
+        verbose_name_plural = _("Surcharges")

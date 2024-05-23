@@ -64,7 +64,8 @@ class OfferListView(ListView):
             if is_active:
                 qs = qs.filter(
                     (Q(start_datetime__lte=now) | Q(start_datetime__isnull=True))
-                    & (Q(end_datetime__gte=now) | Q(end_datetime__isnull=True))
+                    & (Q(end_datetime__gte=now) | Q(end_datetime__isnull=True)),
+                    status=ConditionalOffer.OPEN
                 )
                 self.search_filters.append(_("Is active"))
             else:
@@ -406,6 +407,6 @@ class OfferDetailView(ListView):
     def render_to_response(self, context):
         if self.request.GET.get('format') == 'csv':
             formatter = OrderDiscountCSVFormatter()
-            return formatter.generate_response(context['order_discounts'],
+            return formatter.generate_response(self.get_queryset(),
                                                offer=self.offer)
         return super().render_to_response(context)
