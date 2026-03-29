@@ -3,7 +3,7 @@ PYTEST = $(PWD)/$(VENV)/bin/py.test
 
 # These targets are not files
 .PHONY: build_sandbox clean compile_translations coverage css docs extract_translations help install install-python \
- install-test install-js lint release retest sandbox_clean sandbox_image sandbox test todo venv package
+ install-test install-js lint release retest sandbox_clean sandbox_image sandbox test todo venv package digitalandcode-release
 
 help: ## Display this help message
 	@echo "Please use \`make <target>\` where <target> is one of"
