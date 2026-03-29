@@ -42,9 +42,12 @@
                   <li class="nav-item">
                     <a class="nav-link" href="{% url 'customer:summary' %}"><i class="fas fa-user"></i> {% trans "Account" %}</a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="{% url 'dashboard:logout' %}"><i class="fas fa-sign-out-alt"></i> {% trans "Log out" %}</a>
-                  </li>
+                  <form id="logout_form" method="post" action="{% url 'dashboard:logout' %}">
+                    {% csrf_token %}
+                    <button class="btn btn-link nav-link" type="submit">
+                        <i class="fas fa-sign-out-alt"></i> {% trans "Log out" %}
+                    </button>
+                  </form>
                 </ul>
           </div>
         </nav>
@@ -144,7 +147,7 @@
     // Javascript to enable link to tab
     var url = document.location.toString();
     if (url.match('#')) {
-        $('.nav-list a[href="#' + url.split('#')[1] + '"]').tab('show');
+        $('.bs-docs-sidenav a[href="#' + url.split('#')[1] + '"]').tab('show');
     }
 
     // Change hash for page-reload

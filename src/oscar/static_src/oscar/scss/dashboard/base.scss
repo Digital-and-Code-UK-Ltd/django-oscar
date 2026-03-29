@@ -5,7 +5,7 @@ body {
 // TYPES CHANGES
 // -------------
 h1, h2, h3, h4, h5, h6 {
-  margin-bottom: $line-height-base / 2;
+  margin-bottom: calc($line-height-base / 2);
   margin-top: 0;
   font-weight: normal;
 }
@@ -149,4 +149,11 @@ h3.app-ico:before {
   .tab-nav {
     margin-bottom: $paragraph-margin-bottom;
   }
+}
+
+
+// Bulk Actions
+// ------------
+.bulk-action-container {
+  height: 2rem;
 }

@@ -5,10 +5,10 @@ __all__ = ['PermissionFactory']
 
 
 class PermissionFactory(factory.django.DjangoModelFactory):
-    name = 'Dummy permission'
-    codename = 'dummy'
+    name = "Dummy permission"
+    codename = "dummy"
 
     class Meta:
         model = auth_models.Permission
-        django_get_or_create = ('content_type', 'codename')
+        django_get_or_create = ("content_type", "codename")
 

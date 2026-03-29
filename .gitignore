@@ -60,3 +60,6 @@ settings_local.py
 /sandbox/logs/
 
 .history/*
+
+# test stuff
+/tests/whoosh_index/
