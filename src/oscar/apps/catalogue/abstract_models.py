@@ -219,8 +219,8 @@ class AbstractCategory(MP_Node):
             is_public=False, path__rstartswith=OuterRef("path"), depth__lt=OuterRef("depth")
         )
         self.get_descendants_and_self().update(
-            ancestors_are_public=Exists(
-                included_in_non_public_subtree.values("id"), negated=True))
+            ancestors_are_public=~Exists(
+                included_in_non_public_subtree.values("id")))
 
         # Correctly populate ancestors_are_public
         self.refresh_from_db()
@@ -598,7 +598,9 @@ class AbstractProduct(models.Model):
         """
         Test if this product has any stockrecords
         """
-        return self.stockrecords.exists()
+        if self.id:
+            return self.stockrecords.exists()
+        return False
 
     @property
     def num_stockrecords(self):
