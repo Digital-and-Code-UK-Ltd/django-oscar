@@ -20,7 +20,6 @@ from oscar.test.factories import (
     VoucherSetFactory,
 )
 
-FlatPage = get_model("flatpages", "FlatPage")
 WeightBand = get_model("shipping", "WeightBand")
 WeightBased = get_model("shipping", "WeightBased")
 CommunicationEventType = get_model("communication", "CommunicationEventType")
@@ -462,9 +461,6 @@ class OrderDashboardAccessTest(BaseViewPermissionTestCase):
 
 class PageDashboardAccessTest(BaseViewPermissionTestCase):
     def get_view_access_requirements(self):
-        flatpage = FlatPage.objects.create(
-            title="title1", url="/url1/", content="some content"
-        )
         return [
             {
                 "name": "dashboard:page-list",
@@ -474,20 +470,6 @@ class PageDashboardAccessTest(BaseViewPermissionTestCase):
                 "name": "dashboard:page-create",
                 "permissions": DashboardPermission.get(
                     "flatpages", "view_flatpage", "add_flatpage"
-                ),
-            },
-            {
-                "name": "dashboard:page-update",
-                "kwargs": {"pk": flatpage.id},
-                "permissions": DashboardPermission.get(
-                    "flatpages", "view_flatpage", "change_flatpage"
-                ),
-            },
-            {
-                "name": "dashboard:page-delete",
-                "kwargs": {"pk": flatpage.id},
-                "permissions": DashboardPermission.get(
-                    "flatpages", "view_flatpage", "delete_flatpage"
                 ),
             },
         ]

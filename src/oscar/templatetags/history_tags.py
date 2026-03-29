@@ -7,7 +7,6 @@ from django.utils.translation import gettext_lazy as _
 
 from oscar.core.loading import get_class, get_model
 
-Site = get_model("sites", "Site")
 CustomerHistoryManager = get_class("customer.history", "CustomerHistoryManager")
 
 register = template.Library()

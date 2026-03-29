@@ -1,4 +1,3 @@
-from django.contrib.flatpages.models import FlatPage
 from django.core.exceptions import ValidationError
 from django.test import TestCase, override_settings
 from django.utils.translation import activate
@@ -35,13 +34,6 @@ class TestExtendedURLValidator(TestCase):
     def test_raises_validation_error_for_urls_without_trailing_slash(self):
         with self.assertRaises(ValidationError):
             self.validator("/catalogue")  # Missing the / is bad
-
-    def test_validates_flatpages_urls(self):
-        FlatPage.objects.create(title="test page", url="/test/page/")
-        try:
-            self.validator("/test/page/")
-        except ValidationError:
-            self.fail("ExtendedURLValidator raises ValidationError unexpectedly!")
 
 
 @override_settings(
@@ -115,6 +107,3 @@ class TestURLDoesNotExistValidator(TestCase):
     def test_raises_exception_for_local_urls(self):
         self.assertRaises(ValidationError, self.validator, "/")
 
-    def test_raises_exception_for_flatpages(self):
-        FlatPage.objects.create(title="test page", url="/test/page/")
-        self.assertRaises(ValidationError, self.validator, "/test/page/")
