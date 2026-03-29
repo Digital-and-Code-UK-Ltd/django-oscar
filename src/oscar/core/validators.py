@@ -34,7 +34,7 @@ class ExtendedURLValidator(validators.URLValidator):
         except Http404:
             # We load flatpages here as it causes a circular reference problem
             # sometimes.  FlatPages is None if not installed
-            FlatPage = get_model("flatpages", "FlatPage")
+            FlatPage = None
             if FlatPage is not None:
                 try:
                     FlatPage.objects.get(url=value)

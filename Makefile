@@ -67,10 +67,10 @@ sandbox_image: ## Build latest docker image of django-oscar-sandbox
 # Tests and checks
 ##################
 test: venv ## Run tests
-	$(PYTEST)
+	$(PYTEST) --sqlite
 
 retest: venv ## Run failed tests only
-	$(PYTEST) --lf
+	$(PYTEST) --lf --sqlite
 
 coverage: venv ## Generate coverage report
 	$(PYTEST) --cov=oscar --cov-report=term-missing

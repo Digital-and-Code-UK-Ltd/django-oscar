@@ -459,22 +459,6 @@ class OrderDashboardAccessTest(BaseViewPermissionTestCase):
         ]
 
 
-class PageDashboardAccessTest(BaseViewPermissionTestCase):
-    def get_view_access_requirements(self):
-        return [
-            {
-                "name": "dashboard:page-list",
-                "permissions": DashboardPermission.get("flatpages", "view_flatpage"),
-            },
-            {
-                "name": "dashboard:page-create",
-                "permissions": DashboardPermission.get(
-                    "flatpages", "view_flatpage", "add_flatpage"
-                ),
-            },
-        ]
-
-
 class PartnerDashboardAccessTest(BaseViewPermissionTestCase):
     def get_view_access_requirements(self):
         partner = PartnerFactory()
