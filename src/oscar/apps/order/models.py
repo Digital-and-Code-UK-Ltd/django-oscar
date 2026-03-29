@@ -89,14 +89,16 @@ if not is_model_registered("order", "ShippingEvent"):
     __all__.append("ShippingEvent")
 
 
-if not is_model_registered('order', 'ShippingEventQuantity'):
+if not is_model_registered("order", "ShippingEventQuantity"):
+
     class ShippingEventQuantity(AbstractShippingEventQuantity):
         pass
 
-    __all__.append('ShippingEventQuantity')
+    __all__.append("ShippingEventQuantity")
 
 
-if not is_model_registered('order', 'ShippingEventType'):
+if not is_model_registered("order", "ShippingEventType"):
+
     class ShippingEventType(AbstractShippingEventType):
         pass
 
@@ -111,14 +113,16 @@ if not is_model_registered("order", "PaymentEvent"):
     __all__.append("PaymentEvent")
 
 
-if not is_model_registered('order', 'PaymentEventQuantity'):
+if not is_model_registered("order", "PaymentEventQuantity"):
+
     class PaymentEventQuantity(AbstractPaymentEventQuantity):
         pass
 
-    __all__.append('PaymentEventQuantity')
+    __all__.append("PaymentEventQuantity")
 
 
-if not is_model_registered('order', 'PaymentEventType'):
+if not is_model_registered("order", "PaymentEventType"):
+
     class PaymentEventType(AbstractPaymentEventType):
         pass
 

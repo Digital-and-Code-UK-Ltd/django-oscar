@@ -53,7 +53,7 @@ class TestCustomerConcreteEmailsSending(EmailsMixin, TestCase):
         self.dispatcher.send_password_reset_email_for_user(self.user, extra_context)
 
         self._test_common_part()
-        expected_subject = 'Resetting your password at {}.'.format('example.com')
+        expected_subject = "Resetting your password at {}.".format("example.com")
         self.assertEqual(expected_subject, mail.outbox[0].subject)
         self.assertIn(
             "Please go to the following page and choose a new password:",
@@ -89,7 +89,7 @@ class TestCustomerConcreteEmailsSending(EmailsMixin, TestCase):
         self.dispatcher.send_password_changed_email_for_user(self.user, extra_context)
 
         self._test_common_part()
-        expected_subject = 'Your password changed at {}.'.format('example.com')
+        expected_subject = "Your password changed at {}.".format("example.com")
         self.assertEqual(expected_subject, mail.outbox[0].subject)
         self.assertIn("your password has been changed", mail.outbox[0].body)
         self.assertIn(
@@ -123,7 +123,7 @@ class TestCustomerConcreteEmailsSending(EmailsMixin, TestCase):
         self.dispatcher.send_email_changed_email_for_user(self.user, extra_context)
 
         self._test_common_part()
-        expected_subject = 'Your email address has changed at {}.'.format('example.com')
+        expected_subject = "Your email address has changed at {}.".format("example.com")
         self.assertEqual(expected_subject, mail.outbox[0].subject)
         self.assertIn("your email address has been changed", mail.outbox[0].body)
         self.assertIn(

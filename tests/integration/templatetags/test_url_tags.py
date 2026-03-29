@@ -9,11 +9,15 @@ class TestUrlTags(TestCase):
             "{% load url_tags %}"
             "{% absolute_url site.domain path %}."
         )
-        out = tmpl.render(template.Context({
-            'site': 'example.com',
-            'path': '/some/test/path',
-        }))
-        assert out == 'http://example.com/some/test/path.'
+        out = tmpl.render(
+            template.Context(
+                {
+                    "site": "example.com",
+                    "path": "/some/test/path",
+                }
+            )
+        )
+        assert out == "http://example.com/some/test/path."
 
     def test_absolute_url_tag_with_blocktrans(self):
         tmpl = template.Template(
@@ -28,7 +32,7 @@ class TestUrlTags(TestCase):
         out = tmpl.render(
             template.Context(
                 {
-                    "site": 'example.com',
+                    "site": "example.com",
                     "path_1": "/some/test/path",
                     "path_2": "/some/another/test/path",
                 }

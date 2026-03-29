@@ -46,9 +46,10 @@ class UpdateView(generic.UpdateView):
         return super().form_valid(form)
 
     def get_messages_context(self, form):
-        ctx = {'user': self.request.user,
-               # 'site': get_current_site(self.request)
-               }
+        ctx = {
+            "user": self.request.user,
+            # 'site': get_current_site(self.request)
+        }
         ctx.update(form.get_preview_context())
         return ctx
 

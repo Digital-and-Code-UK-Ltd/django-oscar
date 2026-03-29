@@ -25,8 +25,8 @@ INSTALLED_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.staticfiles",
-
-
+    #
+    #
     "oscar.config.Shop",
     "oscar.apps.analytics.apps.AnalyticsConfig",
     "oscar.apps.checkout.apps.CheckoutConfig",
@@ -51,7 +51,7 @@ INSTALLED_APPS = [
     "oscar.apps.dashboard.catalogue.apps.CatalogueDashboardConfig",
     "oscar.apps.dashboard.offers.apps.OffersDashboardConfig",
     "oscar.apps.dashboard.partners.apps.PartnersDashboardConfig",
-
+    #
     "oscar.apps.dashboard.ranges.apps.RangesDashboardConfig",
     "oscar.apps.dashboard.reviews.apps.ReviewsDashboardConfig",
     "oscar.apps.dashboard.vouchers.apps.VouchersDashboardConfig",

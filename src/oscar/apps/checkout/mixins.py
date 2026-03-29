@@ -328,7 +328,7 @@ class OrderPlacementMixin(CheckoutSessionMixin):
             # fixme
             # site = Site.objects.get_current(self.request)
             # ctx['status_url'] = 'http://%s%s' % (site.domain, path)
-            ctx['status_url'] = 'please override this :)'
+            ctx["status_url"] = "please override this :)"
         return ctx
 
     # Basket helpers

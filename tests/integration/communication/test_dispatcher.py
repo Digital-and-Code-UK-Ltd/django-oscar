@@ -37,10 +37,10 @@ class TestDispatcher(TestCase):
             category=CommunicationEventType.USER_RELATED,
         )
         ctx = {
-            'user': user,
-            'site': {'name': 'test', 'domain': 'test.com'},
-            'reset_url': get_password_reset_url(user),
-            'new_email': 'newtestuser@example.com',
+            "user": user,
+            "site": {"name": "test", "domain": "test.com"},
+            "reset_url": get_password_reset_url(user),
+            "new_email": "newtestuser@example.com",
         }
         self._dispatch_user_messages(
             user, event_code, ctx, "Your email address has changed at Test Site."
@@ -57,10 +57,12 @@ class TestDispatcher(TestCase):
             category=CommunicationEventType.USER_RELATED,
         )
         ctx = {
-            'user': user,
-            'site': {'name': 'test', 'domain': 'test.com'},
+            "user": user,
+            "site": {"name": "test", "domain": "test.com"},
         }
-        self._dispatch_user_messages(user, event_code, ctx, 'Thank you for registering.')
+        self._dispatch_user_messages(
+            user, event_code, ctx, "Thank you for registering."
+        )
 
     def test_dispatcher_uses_email_connection(self):
         connection = mail.get_connection()
